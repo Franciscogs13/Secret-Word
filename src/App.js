@@ -28,7 +28,7 @@ function App() {
 
   const[guessedLetters, setGuessedLetters] = useState([]);
   const [wrongLetters, setWrongLetters] = useState([]);
-  const [guesses, setGuesses] = useState(6);
+  const [guesses, setGuesses] = useState(3);
   const [score, setScore] = useState(0)
 
   const pickedWordAnCategory = useCallback(() => {
@@ -114,14 +114,15 @@ function App() {
 
       //restart game with new word
       startGame();
+      setGuesses(3);
 
     }
-  } , [guessedLetters, letters, startGame])
+  } , [guessedLetters, letters, startGame,setGuesses, currentStage])
 
 //Restart the Game
   const restartGame = () =>{
     setScore(0);
-    setGuesses(6);
+    setGuesses(3);
     setCurrentStage(stages[0].name)
   }
 
