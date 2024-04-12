@@ -9,7 +9,13 @@ const Game = ({verifyLetter, pickedWord, pickedCategory, letters, guessedLetters
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    verifyLetter(letter);
+    const inputLetter = letter.trim().toLowerCase();
+    //proibe a inserção de números
+    if (!/^[a-zA-ZÀ-úÇç]$/.test(inputLetter)) {
+    alert("Por favor, insira apenas letras.");
+    return;
+  }
+    verifyLetter(inputLetter);
 
     setLetter("");
     letterInputRef.current.focus();
